@@ -1,11 +1,12 @@
-From 284afdc92eb2edffab500eb3768a9347bc5e77c8 Mon Sep 17 00:00:00 2001
+From b1d022612c97be6c58b023cbbf5f7562eeab7c3b Mon Sep 17 00:00:00 2001
 From: Bernd Wachter <bwachter-tmw@lart.info>
-Date: Sat, 23 Jan 2010 23:24:05 +0100
+Date: Sat, 23 Jan 2010 23:37:33 +0100
 Subject: [PATCH] Allow version override with cmake parameters
 
 ---
  CMakeLists.txt |    4 +++-
- 1 files changed, 3 insertions(+), 1 deletions(-)
+ src/winver.h   |    2 ++
+ 2 files changed, 5 insertions(+), 1 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 4d9238d..dd10b71 100644
@@ -22,6 +23,17 @@ index 4d9238d..dd10b71 100644
  
  # where to look for cmake modules
  SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake/Modules)
+diff --git a/src/winver.h b/src/winver.h
+index 708e247..bcaa410 100644
+--- a/src/winver.h
++++ b/src/winver.h
+@@ -3,4 +3,6 @@
+ #define VER_MINOR 0
+ #define VER_RELEASE 29
+ #define VER_BUILD 1
++#ifndef PACKAGE_VERSION
+ #define PACKAGE_VERSION "0.0.29.1"
++#endif
 -- 
 1.5.6.5
 
