@@ -17,7 +17,7 @@ pkg_install(){
         mkdir -p $TRANSFER/$NAME
         mv *.exe $TRANSFER/$NAME/
         cd $BASE/build/$NAME/src/
-        mv mana.exe $TRANSFER/$NAME/mana-$VERSION.exe
-        mv mana-ea.exe $TRANSFER/$NAME/mana-ea-$VERSION.exe
+        zip $TRANSFER/$NAME/mana-$VERSION.exe.zip mana.exe
+        zip $TRANSFER/$NAME/mana-ea-$VERSION.exe.zip mana-ea.exe
     fi
 }
