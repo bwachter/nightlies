@@ -14,5 +14,3 @@ the EXE files in the installation directory with newer versions.
 If you experience any problems do a complete uninstall, and try again with the
 newest version available.
 
-Known Problems:
-- Translations are not working
