@@ -1,6 +1,6 @@
-From ae069c3003f5b1ea85ead6f2bb49d540771b456d Mon Sep 17 00:00:00 2001
+From 51a25360b2db8c6b76e896bbfec819e10a104a89 Mon Sep 17 00:00:00 2001
 From: Bernd Wachter <bwachter-tmw@lart.info>
-Date: Sat, 23 Jan 2010 21:23:11 +0100
+Date: Sat, 23 Jan 2010 21:56:45 +0100
 Subject: [PATCH] Add win32 rc handling to cmake; fix icon path
 
 ---
@@ -11,12 +11,12 @@ Subject: [PATCH] Add win32 rc handling to cmake; fix icon path
  create mode 100644 src/mana-ea.rc
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index c06f7d9..58543e2 100644
+index c06f7d9..4bcdc7b 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -21,6 +21,21 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL SunOS)
-     SET(EXTRA_LIBRARIES intl)
- ENDIF()
+@@ -45,6 +45,22 @@ INCLUDE_DIRECTORIES(
+     ${GUICHAN_INCLUDE_DIR}
+     )
  
 +# enable rc-handling with mingw
 +# most likely this part can be kicked out with some later cmake version
@@ -24,8 +24,9 @@ index c06f7d9..58543e2 100644
 +    FIND_PATH(MINGW_INCLUDE_DIR windows.h $ENV{INCLUDE})
 +    IF (MINGW_INCLUDE_DIR)
 +        MESSAGE(STATUS "Found mingw headers: ${MINGW_INCLUDE_DIR}")
++        INCLUDE_DIRECTORIES(${MINGW_INCLUDE_DIR})
 +    ELSE()
-+        MESSAGE(STATUS "Unable to find mingw headers. Depending on your setup this might be bad.")
++        MESSAGE(FATAL_ERROR "Unable to find mingw headers. Required for windres")
 +    ENDIF()
 +    SET(CMAKE_RC_COMPILER_INIT windres)
 +    ENABLE_LANGUAGE(RC)
@@ -33,17 +34,9 @@ index c06f7d9..58543e2 100644
 +      "<CMAKE_RC_COMPILER> <FLAGS> <DEFINES> -O coff -o <OBJECT> <SOURCE>")
 +ENDIF()
 +
- SET(GUICHAN_COMPONENTS "SDL")
- FIND_PACKAGE(Guichan REQUIRED ${GUICHAN_COMPONENTS})
- 
-@@ -43,6 +58,7 @@ INCLUDE_DIRECTORIES(
-     ${CURL_INCLUDE_DIR}
-     ${LIBXML2_INCLUDE_DIR}
-     ${GUICHAN_INCLUDE_DIR}
-+    ${MINGW_INCLUDE_DIR}
-     )
- 
  # Fix some stuff that gets not hidden by mainline modules
+ MARK_AS_ADVANCED(PHYSFS_INCLUDE_DIR)
+ MARK_AS_ADVANCED(PHYSFS_LIBRARY)
 @@ -544,6 +560,10 @@ SET(SRCS_MANA
      net/manaserv/tradehandler.h
      )
