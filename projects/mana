@@ -1,0 +1,23 @@
+TYPE=git
+SOURCE=git://gitorious.org/mana/mana.git
+CONFIGTOOL=cmake
+PATCHES="0001-Link-explicitely-to-libintl-on-Win32-builds.patch 0001-Allow-overwriting-of-nsis-parameters-allow-adding-b.patch"
+
+pkg_install(){
+    local _VERSION=0.1.`date +%Y%m%d`
+    cd $BASE/build/$NAME/po
+    for i in *.gmo; do
+        _LC=`echo $i|sed 's/\..*//'`
+        mkdir -p ../translations/$_LC/LC_MESSAGES
+        cp $i ../translations/$_LC/LC_MESSAGES/$_LC.mo
+    done
+    cd $BASE/build/$NAME/packaging/windows
+    makensis -DDLLDIR=/build/tmw-libs/lib/ -DPRODUCT_VERSION=$_VERSION -DUPX=upx -DEXESUFFIX=/src -DCOMBINED_BUILD=1 setup.nsi
+    if [ -d /transfer ]; then
+        mkdir -p /transfer/$NAME
+        mv *.exe /transfer/$NAME/
+        cd $BASE/build/$NAME/src/
+        mv mana.exe /transfer/$NAME/mana-$_VERSION.exe
+        mv mana-ea.exe /transfer/$NAME/mana-ea-$_VERSION.exe
+    fi
+}
