@@ -2,7 +2,7 @@ TYPE=git
 SOURCE=git://gitorious.org/mana/mana.git
 CONFIGTOOL=cmake
 PATCHES="0001-Link-explicitely-to-libintl-on-Win32-builds.patch 0001-Allow-overwriting-of-nsis-parameters-allow-adding-b.patch 0001-Add-win32-rc-handling-to-cmake-fix-icon-path.patch 0001-Add-flag-to-actually-enable-gettext-when-building-wi.patch 0001-Allow-version-override-with-cmake-parameters.patch"
-VERSION=0.1.`date +%Y%m%d`
+VERSION=0.1.0.`date +%m%d`
 
 pkg_install(){
     cd $BASE/build/$NAME/po
