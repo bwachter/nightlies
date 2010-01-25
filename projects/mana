@@ -1,7 +1,7 @@
 TYPE=git
 SOURCE=git://gitorious.org/mana/mana.git
 CONFIGTOOL=cmake
-PATCHES="0001-Allow-overwriting-of-nsis-parameters-allow-adding-b.patch 0001-Add-win32-rc-handling-to-cmake-fix-icon-path.patch 0001-Allow-version-override-with-cmake-parameters.patch"
+PATCHES="0001-Allow-overwriting-of-nsis-parameters-allow-adding-b.patch 0001-Add-win32-rc-handling-to-cmake-fix-icon-path.patch 0001-Allow-version-overriding-by-CMake-parameters-autoge.patch"
 VERSION=0.1.0.`date +%Y%m%d`
 
 pkg_install(){
