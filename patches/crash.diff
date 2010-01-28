@@ -1,0 +1,14 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index af1057a..06c315a 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -804,6 +804,9 @@ int main(int argc, char *argv[])
+ 
+     SDL_Event event;
+ 
++    int *segv=NULL;
++    *segv=1;
++
+     while (state != STATE_EXIT)
+     {
+         bool handledEvents = false;
