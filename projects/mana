@@ -1,7 +1,7 @@
 TYPE=git
 SOURCE=git://gitorious.org/mana/mana.git
 CONFIGTOOL=cmake
-PATCHES="0001-Add-win32-rc-handling-to-cmake-fix-icon-path.patch"
+PATCHES=""
 CONFIGFLAGS=-DCMAKE_BUILD_TYPE=RelWithDebInfo
 VERSION=0.1.0.`date +%Y%m%d`
 
@@ -13,12 +13,11 @@ pkg_install(){
         cp $i ../translations/$_LC/LC_MESSAGES/mana.mo
     done
     cd $BASE/build/$NAME/packaging/windows
-    makensis -DDLLDIR=/build/tmw-libs/lib/ -DPRODUCT_VERSION=$VERSION -DUPX=true -DEXESUFFIX=/src -DCOMBINED_BUILD=1 setup.nsi
+    makensis -DDLLDIR=/build/tmw-libs/lib/ -DPRODUCT_VERSION=$VERSION -DUPX=true -DEXESUFFIX=/src setup.nsi
     if [ -d $TRANSFER/ ]; then
         mkdir -p $TRANSFER/$NAME
         mv *.exe $TRANSFER/$NAME/
         cd $BASE/build/$NAME/src/
         zip $TRANSFER/$NAME/mana-$VERSION.exe.zip mana.exe
-        zip $TRANSFER/$NAME/mana-ea-$VERSION.exe.zip mana-ea.exe
     fi
 }
