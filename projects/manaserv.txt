@@ -1,0 +1,4 @@
+This directory contains nightly Windows builds of the Mana server.
+
+So far this includes binaries only, you might need some of the DLL
+files from the client, as well as maps, etc

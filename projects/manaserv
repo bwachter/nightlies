@@ -1,6 +1,7 @@
 TYPE=git
 SOURCE=git://gitorious.org/mana/manaserv.git
 CONFIGTOOL=cmake
+PROJECT=mana
 PATCHES=""
 CONFIGFLAGS=-DCMAKE_BUILD_TYPE=RelWithDebInfo
 #CONFIGFLAGS="-DCMAKE_BUILD_TYPE=Release -DTOOLCHAIN=i586-mingw32msvc-"
@@ -10,9 +11,7 @@ pkg_install(){
     #cd $BASE/build/$NAME/packaging/windows
     #makensis -DDLLDIR=/build/tmw-libs/lib/ -DPRODUCT_VERSION=$VERSION -DUPX=true -DEXESUFFIX=/src -DCOMBINED_BUILD=1 setup.nsi
     if [ -d $TRANSFER/ ]; then
-        mkdir -p $TRANSFER/$NAME
-        mv *.exe $TRANSFER/$NAME/
         cd $BASE/build/$NAME/src/
-        zip $TRANSFER/$NAME/manaserv-$VERSION.exe.zip manaserv-game.exe manaserv-account.exe
+        zip $TRANSFER/$PROJECT/$NAME/manaserv-$VERSION.exe.zip manaserv-game.exe manaserv-account.exe
     fi
 }
