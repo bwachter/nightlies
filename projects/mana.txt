@@ -11,3 +11,6 @@ mana.exe in the installation directory with newer versions.
 
 If you experience any problems do a complete uninstall, and try again with the
 newest version available.
+
+Old builds are kept for one week.
+
