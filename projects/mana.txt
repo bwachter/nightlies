@@ -1,6 +1,10 @@
 This directory contains nightly Windows builds of the Mana client. Starting
 with 20100201 only one binary is used to support both ManaServ and Eathena.
 
+Starting with 2010226 Mana uses different configuration directories for each
+platform. See http://forums.themanaworld.org/viewtopic.php?p=85157&f=1#p85157
+for more information.
+
 - mana-*-win32.exe contains the full installer package
 - mana-*.zip is a ZIP file containing just the binary (mana.exe)
 - patches.* contains all the patches used for building the package at
@@ -13,4 +17,3 @@ If you experience any problems do a complete uninstall, and try again with the
 newest version available.
 
 Old builds are kept for one week.
-
