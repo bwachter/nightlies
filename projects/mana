@@ -14,9 +14,20 @@ pkg_install(){
     done
     cd $BASE/build/$NAME/packaging/windows
     makensis -DDLLDIR=/build/tmw-libs/lib/ -DPRODUCT_VERSION=$VERSION -DUPX=true -DEXESUFFIX=/src setup.nsi
+
+    cd $BASE/build/$NAME/src
+    zip ../mana-$VERSION.zip mana.exe
+    cd $BASE/build/$NAME
+    zip -r mana-$VERSION.zip translations
+    zip mana-$VERSION.zip /build/tmw-libs/lib/*.dll
+    zip mana-$VERSION.zip AUTHORS COPYING NEWS README data/fonts/*.ttf \
+      data/graphics/gui/*.png data/graphics/gui/*.xml \
+      data/graphics/images/*.png data/help/*.txt data/icons/mana.ico \
+      docs/FAQ.txt
     if [ -d $TRANSFER/ ]; then
         mkdir -p $TRANSFER/$NAME
-        mv *.exe $TRANSFER/$NAME/
+        mv mana-$VERSION.zip $TRANSFER/$NAME/
+        mv packaging/windows/*.exe $TRANSFER/$NAME/
         cd $BASE/build/$NAME/src/
         zip $TRANSFER/$NAME/mana-$VERSION.exe.zip mana.exe
     fi
