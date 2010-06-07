@@ -19,7 +19,7 @@ pkg_install(){
     zip ../mana-$VERSION.zip mana.exe
     cd $BASE/build/$NAME
     zip -r mana-$VERSION.zip translations
-    zip mana-$VERSION.zip /build/tmw-libs/lib/*.dll
+    zip -j mana-$VERSION.zip /build/tmw-libs/lib/*.dll
     zip mana-$VERSION.zip AUTHORS COPYING NEWS README data/fonts/*.ttf \
       data/graphics/gui/*.png data/graphics/gui/*.xml \
       data/graphics/images/*.png data/help/*.txt data/icons/mana.ico \
