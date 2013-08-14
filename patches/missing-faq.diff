@@ -1,0 +1,13 @@
+diff --git a/packaging/windows/setup.nsi b/packaging/windows/setup.nsi
+index f7d7e06..9010910 100644
+--- a/packaging/windows/setup.nsi
++++ b/packaging/windows/setup.nsi
+@@ -237,8 +237,6 @@ Section "Core files (required)" SecCore
+   File "${SRCDIR}\data\help\*.txt"
+   SetOutPath "$INSTDIR\data\icons\"
+   File "${SRCDIR}\data\icons\mana.ico"
+-  SetOutPath "$INSTDIR\docs"
+-  File "${SRCDIR}\docs\FAQ.txt"
+ SectionEnd
+ 
+ Section /o "Portable" SecPortable

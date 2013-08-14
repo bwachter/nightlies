@@ -1,7 +1,7 @@
 TYPE=git
 SOURCE=git://gitorious.org/mana/mana.git
 CONFIGTOOL=cmake
-PATCHES=""
+PATCHES="int.diff missing-faq.diff"
 CONFIGFLAGS=-DCMAKE_BUILD_TYPE=RelWithDebInfo
 VERSION=0.1.0.`date +%Y%m%d`
 
